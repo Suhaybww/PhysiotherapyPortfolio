@@ -73,7 +73,7 @@ export const NavBar = ({
           </Link>
         ))}
         <Link href="#contact" passHref>
-          <div className="border text-sm font-medium relative border-black/[0.2] text-black px-4 py-2 rounded-full">
+          <div className="bg-accent text-white text-sm font-medium relative px-4 py-2 rounded-full">
             <span>Contact</span>
             <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
           </div>
