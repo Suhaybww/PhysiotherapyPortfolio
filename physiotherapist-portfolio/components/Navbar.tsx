@@ -1,84 +1,72 @@
-'use client';
+"use client";
 import React, { useState } from 'react';
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useMotionValueEvent,
-} from 'framer-motion';
 import Link from 'next/link';
-import { FiHome, FiUser, FiBriefcase } from 'react-icons/fi';
-import { cn } from '../utils/cn'; // Ensure you have a utility function for classnames
+import { FiHome, FiUser, FiBriefcase, FiMenu } from 'react-icons/fi';
+import { cn } from '../utils/cn';
 
-export const NavBar = ({
-  className,
-}: {
-  className?: string;
-}) => {
-  const { scrollYProgress } = useScroll();
-  const [visible, setVisible] = useState(false);
+const navItems = [
+  {
+    name: 'Home',
+    link: '/',
+    icon: <FiHome className="h-6 w-6" />,
+  },
+  {
+    name: 'About',
+    link: '#about',
+    icon: <FiUser className="h-6 w-6" />,
+  },
+  {
+    name: 'Services',
+    link: '#services',
+    icon: <FiBriefcase className="h-6 w-6" />,
+  },
+];
 
-  useMotionValueEvent(scrollYProgress, 'change', (current) => {
-    if (typeof current === 'number') {
-      const previous = scrollYProgress.getPrevious();
-      const currentScroll = scrollYProgress.get();
+export const NavBar = ({ className }: { className?: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-      if (previous !== undefined && currentScroll !== undefined) {
-        let direction = currentScroll - previous;
-
-        if (currentScroll < 0.05) {
-          setVisible(false);
-        } else {
-          setVisible(direction < 0);
-        }
-      }
-    }
-  });
-
-  const navItems = [
-    {
-      name: 'Home',
-      link: '/',
-      icon: <FiHome className="h-4 w-4 text-neutral-500 dark:text-black" />,
-    },
-    {
-      name: 'About',
-      link: '#about',
-      icon: <FiUser className="h-4 w-4 text-neutral-500 dark:text-black" />,
-    },
-    {
-      name: 'Services',
-      link: '#services',
-      icon: <FiBriefcase className="h-4 w-4 text-neutral-500 dark:text-black" />,
-    },
-  ];
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        initial={{ opacity: 1, y: -100 }}
-        animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
-        className={cn(
-          'flex max-w-fit fixed top-10 inset-x-0 mx-auto border border-transparent rounded-full bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-8 py-2 items-center justify-center space-x-4',
-          className
-        )}
-      >
+    <div className={cn("flex items-center justify-between p-4 bg-primary", className)}>
+      <div className="hidden sm:flex items-center space-x-6">
         {navItems.map((navItem, idx) => (
           <Link key={`link=${idx}`} href={navItem.link} passHref>
-            <div className="relative text-black items-center flex space-x-1 hover:text-black/[0.9]">
-              <span className="block sm:hidden">{navItem.icon}</span>
-              <span className="hidden sm:block text-sm">{navItem.name}</span>
-            </div>
+            <button className="flex items-center space-x-2 text-white hover:text-accent transition-colors duration-300 font-semibold">
+              <span className="text-lg">{navItem.name}</span>
+            </button>
           </Link>
         ))}
         <Link href="#contact" passHref>
-          <div className="bg-accent text-white text-sm font-medium relative px-4 py-2 rounded-full">
+          <button className="bg-accent text-white text-lg font-semibold relative px-6 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300 shadow-md">
             <span>Contact</span>
-            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
-          </div>
+          </button>
         </Link>
-      </motion.div>
-    </AnimatePresence>
+      </div>
+      <div className="sm:hidden flex items-center">
+        <button className="text-white" onClick={toggleMenu}>
+          <FiMenu className="h-8 w-8" />
+        </button>
+      </div>
+      {isOpen && (
+        <div className="sm:hidden absolute top-20 right-0 bg-primary shadow-lg rounded-md p-4 space-y-2 z-10">
+          {navItems.map((navItem, idx) => (
+            <Link key={`link=${idx}`} href={navItem.link} passHref>
+              <button className="flex items-center space-x-2 text-white w-full justify-start font-semibold py-2 hover:bg-accent rounded-md">
+                {navItem.icon}
+                <span className="ml-2">{navItem.name}</span>
+              </button>
+            </Link>
+          ))}
+          <Link href="#contact" passHref>
+            <button className="w-full bg-accent text-white font-semibold py-2 rounded-md hover:bg-blue-600">
+              Contact
+            </button>
+          </Link>
+        </div>
+      )}
+    </div>
   );
 };
