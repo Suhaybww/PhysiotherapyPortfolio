@@ -1,9 +1,10 @@
+
 import Head from 'next/head';
 import Header from 'components/header';
 import Footer from 'components/footer';
 import { BackgroundBeams } from 'components/background-beams';
-// import { BentoGrid, BentoGridItem } from 'components/bento-grid';
 import { BentoGridSecondDemo } from 'components/about-section';
+import { ServicesSection } from 'components/services';
 
 export default function Home() {
   return (
@@ -36,13 +37,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Remaining Sections */}
-        <section id="home" className="h-screen flex items-center justify-center bg-gray-100">
-          <h1 className="text-5xl text-gray-800">Home Section</h1>
+        {/* Services Section */}
+        <section id="services" className="py-16 bg-primary">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl font-bold mb-8 text-center text-white">Services</h2>
+            <ServicesSection />
+          </div>
         </section>
-        <section id="services" className="h-screen flex items-center justify-center bg-gray-300">
-          <h1 className="text-5xl text-gray-800">Services Section</h1>
-        </section>
+
+        {/* Contact Section */}
         <section id="contact" className="h-screen flex items-center justify-center bg-gray-400">
           <h1 className="text-5xl text-gray-800">Contact Section</h1>
         </section>
