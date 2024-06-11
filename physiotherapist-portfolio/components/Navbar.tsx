@@ -7,7 +7,7 @@ import { cn } from '../utils/cn';
 const navItems = [
   {
     name: 'Home',
-    link: '/',
+    link: '/#hero', // Update the link to go directly to the hero section
     icon: <FiHome className="h-6 w-6" />,
   },
   {
