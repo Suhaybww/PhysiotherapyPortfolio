@@ -11,7 +11,7 @@ module.exports = {
       },
       colors: {
         primary: '#C1E1C1', // pastel green color code
-        accent: '#A7C7E7',  // Blue color code for contrast
+        accent: '#6495ED',  // Blue color code for contrast
       },
     },
   },
@@ -27,7 +27,7 @@ module.exports = {
         mytheme: {
           primary: '#C1E1C1', // pastel green color code
           secondary: '#ffffff', // White color code
-          accent: '#A7C7E7', // Blue color code for contrast
+          accent: '#6495ED', // Blue color code for contrast
           neutral: '#f0f0f0',
           'base-100': '#f0f0f0',
           info: '#000000',
