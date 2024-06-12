@@ -1,10 +1,10 @@
-
 import Head from 'next/head';
 import Header from 'components/header';
 import Footer from 'components/footer';
 import { BackgroundBeams } from 'components/background-beams';
 import { BentoGridSecondDemo } from 'components/about-section';
 import { ServicesSection } from 'components/services';
+import { ContactForm } from 'components/contact'; // Import the ContactForm component
 
 export default function Home() {
   return (
@@ -31,8 +31,7 @@ export default function Home() {
         {/* About Section */}
         <section id="about" className="py-16 bg-primary">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-8 text-ffffff">About Me</h2>
-            {/* BentoGrid component imported from about-me.tsx */}
+            <h2 className="text-4xl font-bold mb-8 text-white">About Me</h2>
             <BentoGridSecondDemo />
           </div>
         </section>
@@ -46,8 +45,11 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="h-screen flex items-center justify-center bg-gray-400">
-          <h1 className="text-5xl text-gray-800">Contact Section</h1>
+        <section id="contact" className="py-16 bg-primary">
+          <div className="max-w-md mx-auto">
+            <h2 className="text-4xl font-bold mb-8 text-center text-white">Contact Me</h2>
+            <ContactForm />
+          </div>
         </section>
       </main>
       <Footer />
