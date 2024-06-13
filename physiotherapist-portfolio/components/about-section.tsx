@@ -30,67 +30,66 @@ const Skeleton = () => (
 );
 
 const items = [
-    {
-        title: "", // No title needed for this item
-        description: "", // No description needed for this item
-        header: (
-          <div className="flex flex-col justify-center h-full text-center space-y-4"> {/* Added space-y-4 for spacing between paragraphs */}
-            <p className="text-lg font-normal text-white">
-              I am Abdullahi, a dedicated physiotherapist. My goal is to empower clients through education and personalized care.
-            </p>
-            <p className="text-lg font-normal text-white">
-              I believe in a holistic approach that not only treats the injury but also improves overall well-being, considering physical, mental, and social health aspects.
-            </p>
-            <p className="text-lg font-normal text-white">
-              Together, we’ll work towards your recovery and long-term health, helping you achieve your wellness goals.
-            </p>
-          </div>
-        ),
-        className: "md:col-span-2 flex items-center justify-center", // Centered content
-        icon: null, // No icon needed
-      },
   {
-    title: "", // Empty title to ensure it's not displayed
-    description: "", // Empty description to ensure it's not displayed
+    title: "",
+    description: "",
+    header: (
+      <div className="flex flex-col justify-center h-full text-center space-y-4">
+        <p className="text-lg font-normal text-white group-hover/bento:translate-x-2 transition duration-200">
+          I am Abdullahi, a dedicated physiotherapist. My goal is to empower clients through education and personalized care.
+        </p>
+        <p className="text-lg font-normal text-white group-hover/bento:translate-x-2 transition duration-200">
+          I believe in a holistic approach that not only treats the injury but also improves overall well-being, considering physical, mental, and social health aspects.
+        </p>
+        <p className="text-lg font-normal text-white group-hover/bento:translate-x-2 transition duration-200">
+          Together, we'll work towards your recovery and long-term health, helping you achieve your wellness goals.
+        </p>
+      </div>
+    ),
+    className: "md:col-span-2 flex items-center justify-center",
+    icon: null,
+  },
+  {
+    title: "",
+    description: "",
     header: (
       <div className="flex items-center justify-center h-full">
-        <div className="avatar">
+        <div className="avatar group-hover/bento:translate-x-2 transition duration-200">
           <div className="w-36 h-36 rounded-full ring ring-[#6495ED] ring-offset-4 flex items-center justify-center">
             <img src="/photos/1.jpg" alt="Profile" className="rounded-full object-cover" />
           </div>
         </div>
       </div>
     ),
-    className: "md:col-span-1 flex items-center justify-center", // Centered in the middle
+    className: "md:col-span-1 flex items-center justify-center",
     icon: null,
   },
   {
-    title: "", // No title needed for this item
-    description: "", // No description needed for this item
+    title: "",
+    description: "",
     header: (
       <div className="flex flex-col items-center justify-center h-full">
-        <h3 className="text-4xl font-bold text-[#6495ED]">3+</h3>
-        <p className="text-lg font-normal text-[#6495ED]">Experience</p>
+        <h3 className="text-4xl font-bold text-[#6495ED] group-hover/bento:translate-x-2 transition duration-200">3+</h3>
+        <p className="text-lg font-normal text-[#6495ED] group-hover/bento:translate-x-2 transition duration-200">Experience</p>
       </div>
     ),
-    className: "md:col-span-1 flex items-center justify-center", // Ensure it's centered
-    icon: null, // No icon needed for this item
+    className: "md:col-span-1 flex items-center justify-center",
+    icon: null,
   },
   {
-    // Updated bento box with new concise content
-    title: "", // No title needed for this item
-    description: "", // No description needed for this item
+    title: "",
+    description: "",
     header: (
       <div className="flex flex-col justify-center h-full text-center">
-        <p className="text-lg font-normal text-white">
+        <p className="text-lg font-normal text-white group-hover/bento:translate-x-2 transition duration-200">
           I have 2 years of experience treating a variety of conditions in private practice, including musculoskeletal issues, post-surgical rehab, and sports injuries.
         </p>
-        <p className="text-lg font-normal text-white mt-2">
+        <p className="text-lg font-normal text-white mt-2 group-hover/bento:translate-x-2 transition duration-200">
           In my community role, I focus on NDIS clients and seniors, adapting treatments creatively to suit each individual's needs.
         </p>
       </div>
     ),
-    className: "md:col-span-2 flex items-center justify-center", // Centered content
-    icon: null, // No icon needed
+    className: "md:col-span-2 flex items-center justify-center",
+    icon: null,
   },
 ];

@@ -5,6 +5,7 @@ import { Label } from "./label";
 import { Input } from "./input";
 import { Textarea } from "./text-area";
 import { cn } from "../utils/cn";
+import { BackgroundGradient } from "./background-gradient"; 
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -86,9 +87,10 @@ export function ContactForm() {
   };
 
   return (
+    <BackgroundGradient containerClassName="max-w-md w-full mx-auto"> {/* Wrap the form container */}
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-        Contact Us
+        Contact Me
       </h2>
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
         Please fill out the form below to get in touch with me.
@@ -155,6 +157,7 @@ export function ContactForm() {
         </button>
       </form>
     </div>
+    </BackgroundGradient>
   );
 }
 
