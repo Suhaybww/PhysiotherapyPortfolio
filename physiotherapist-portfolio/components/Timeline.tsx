@@ -1,9 +1,9 @@
-// components/Timeline.tsx
-
 import { useEffect } from "react";
 import { FaUniversity, FaBriefcase, FaAward, FaHandsHelping, FaUserMd, FaStethoscope } from "react-icons/fa";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 
 const timelineData = [
   {
@@ -39,7 +39,7 @@ const timelineData = [
   {
     year: "2023",
     title: "Specialized Techniques and Awards",
-    description: "Specialized in Mulligan’s treatment philosophy for cervical conditions and received recognition for contributions in physiotherapy.",
+    description: "Specialized in Mulligan's treatment philosophy for cervical conditions and received recognition for contributions in physiotherapy.",
     icon: FaAward,
   },
 ];
@@ -47,8 +47,8 @@ const timelineData = [
 export const Timeline = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
-    triggerOnce: false,  // Set to false to animate every time it enters the viewport
-    threshold: 0.1,  // Trigger when 10% of the element is visible
+    triggerOnce: false,
+    threshold: 0.1,
   });
 
   useEffect(() => {
@@ -75,35 +75,35 @@ export const Timeline = () => {
   };
 
   return (
-    <div className="py-16 bg-C1E1C1">
+    <motion.div
+      ref={ref}
+      className="py-16 bg-C1E1C1"
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants}
+    >
       <div className="max-w-5xl mx-auto px-8">
         <h2 className="text-3xl font-bold mb-12 text-center text-white">Professional Timeline</h2>
-        <motion.ul 
-          ref={ref}  // Attach the intersection observer to the ul element
-          className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
-          initial="hidden"
-          animate={controls}
-          variants={containerVariants}
-        >
+        <VerticalTimeline>
           {timelineData.map((item, index) => (
-            <motion.li 
-              key={index} 
-              className="mb-10"
-              variants={itemVariants}
+            <VerticalTimelineElement
+              key={index}
+              className="vertical-timeline-element--work"
+              contentStyle={{ background: "#A3C3A3", color: "#fff" }}
+              contentArrowStyle={{ borderRight: "7px solid #A3C3A3" }}
+              date={item.year}
+              dateClassName="text-white"
+              iconStyle={{ background: "#6495ED", color: "#fff" }}
+              icon={<item.icon />}
             >
-              <div className="timeline-middle">
-                <item.icon className="h-5 w-5 text-[#6495ED]" />
-              </div>
-              <div className={`timeline-${index % 2 === 0 ? 'start' : 'end'} mb-10`}>
-                <time className="font-mono italic text-white">{item.year}</time>
-                <div className="text-lg font-black text-white">{item.title}</div>
-                <p className="text-white">{item.description}</p>
-              </div>
-              {index < timelineData.length - 1 && <hr className="border-white" />}
-            </motion.li>
+              <motion.div variants={itemVariants}>
+                <h3 className="vertical-timeline-element-title text-lg font-black">{item.title}</h3>
+                <p>{item.description}</p>
+              </motion.div>
+            </VerticalTimelineElement>
           ))}
-        </motion.ul>
+        </VerticalTimeline>
       </div>
-    </div>
+    </motion.div>
   );
 };

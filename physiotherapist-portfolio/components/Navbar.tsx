@@ -39,11 +39,12 @@ export const NavBar = ({ className }: { className?: string }) => {
             </button>
           </Link>
         ))}
-        <Link href="#contact" passHref>
-          <button className="bg-accent text-white text-lg font-semibold relative px-6 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300 shadow-md">
-            <span>Contact</span>
-          </button>
-        </Link>
+      <Link href="#contact" passHref>
+        <button className="relative px-6 py-2 rounded-full text-white text-lg font-semibold overflow-hidden shadow-md">
+          <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-700"></span>
+          <span className="relative z-10">Contact</span>
+        </button>
+      </Link>
       </div>
       <div className="sm:hidden flex items-center">
         <button className="text-white" onClick={toggleMenu}>

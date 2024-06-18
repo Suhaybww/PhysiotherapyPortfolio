@@ -16,7 +16,7 @@ module.exports = {
         sans: ['Poppins', 'sans-serif'], // Adding custom font
       },
       colors: {
-        primary: '#C1E1C1', // pastel green color code
+        primary: '#ADCDAE', // pastel green color code
         accent: '#6495ED',  // Blue color code for contrast
       },
       boxShadow: {
@@ -32,7 +32,7 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          primary: '#C1E1C1', // pastel green color code
+          primary: '#ADCDAE', // pastel green color code
           secondary: '#ffffff', // White color code
           accent: '#6495ED', // Blue color code for contrast
           neutral: '#f0f0f0',

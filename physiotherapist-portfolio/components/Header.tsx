@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
-import { NavBar } from './navbar';
-import { AnimatedTooltip } from './animated-tooltip';
+import { NavBar } from './NavBar';
+import { AnimatedTooltip } from './ui/animated-tooltip';
 
 const Header: React.FC = () => {
   return (
