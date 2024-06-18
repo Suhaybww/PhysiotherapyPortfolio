@@ -1,10 +1,11 @@
-
 import Head from 'next/head';
-import Header from 'components/header';
-import Footer from 'components/footer';
-import { BackgroundBeams } from 'components/background-beams';
-import { BentoGridSecondDemo } from 'components/about-section';
-import { ServicesSection } from 'components/services';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+import { BentoGrids } from 'components/About';
+import { Services } from 'components/Services';
+import { Timeline } from 'components/Timeline';
+import { ContactSection } from 'components/Contact';
+import { HeroSection } from 'components/Hero';
 
 export default function Home() {
   return (
@@ -16,39 +17,30 @@ export default function Home() {
       <Header />
       <main className="flex-grow bg-primary text-white">
         {/* Hero Section */}
-        <section id="hero" className="relative h-screen flex items-center justify-center bg-primary text-white overflow-hidden">
-          <div className="relative z-10 max-w-2xl mx-auto text-center">
-            <h1 className="text-5xl font-bold">
-              Welcome to <span className="text-accent">Abdullahi's</span> Portfolio
-            </h1>
-            <p className="mt-4 text-xl">
-              Discover the healing power of <span className="text-accent">physiotherapy</span> and experience the benefits of personalized care. Trust in <span className="text-accent">Abdullahi's</span> expertise to guide you on your path to recovery and wellness.
-            </p>
-          </div>
-          <BackgroundBeams className="absolute inset-0 z-0" />
-        </section>
-
+        <HeroSection />
+      
         {/* About Section */}
         <section id="about" className="py-16 bg-primary">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-8 text-ffffff">About Me</h2>
-            {/* BentoGrid component imported from about-me.tsx */}
-            <BentoGridSecondDemo />
+            <h2 className="text-4xl font-bold mb-8 text-white">About Me</h2>
+            <BentoGrids />
           </div>
         </section>
-
+        
+        {/* Timeline Section */}
+        <section id="timeline" className="py-16">
+          <Timeline />
+        </section>
+      
         {/* Services Section */}
         <section id="services" className="py-16 bg-primary">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 text-center text-white">Services</h2>
-            <ServicesSection />
+            <Services /> 
           </div>
         </section>
-
+      
         {/* Contact Section */}
-        <section id="contact" className="h-screen flex items-center justify-center bg-gray-400">
-          <h1 className="text-5xl text-gray-800">Contact Section</h1>
-        </section>
+        <ContactSection />
       </main>
       <Footer />
     </div>
