@@ -10,6 +10,9 @@ const nextConfig = {
       '/': { page: '/' },
     };
   },
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = nextConfig;
