@@ -32,7 +32,7 @@ export const AnimatedTooltip = () => {
     id: 1,
     name: 'Abdullahi',
     designation: 'Physiotherapist',
-    image: '/photos/1.jpg',
+    image: '/photos/headshot-2.jpg',
   };
 
   return (

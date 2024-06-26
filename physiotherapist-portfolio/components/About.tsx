@@ -56,9 +56,20 @@ const items = [
       <div className="flex items-center justify-center h-full">
         <div className="avatar group-hover/bento:translate-x-2 transition duration-200">
           <div className="w-36 h-36 rounded-full ring ring-[#6495ED] ring-offset-4 flex items-center justify-center">
-            <img src="/photos/1.jpg" alt="Profile" className="rounded-full object-cover" />
+            <img src="/photos/headshot2.jpg" alt="Profile" className="rounded-full object-cover" />
           </div>
         </div>
+      </div>
+    ),
+    className: "md:col-span-1 flex items-center justify-center",
+    icon: null,
+  },
+  {
+    title: "",
+    description: "",
+    header: (
+      <div className="flex items-center justify-center h-full">
+        <img src="/photos/1.jpg" alt="" className="object-cover object-center w-full h-full rounded-lg group-hover/bento:scale-105 transition duration-200" />
       </div>
     ),
     className: "md:col-span-1 flex items-center justify-center",
@@ -80,6 +91,17 @@ const items = [
     title: "",
     description: "",
     header: (
+      <div className="flex items-center justify-center h-full">
+        <img src="/photos/2.jpg" alt="" className="object-cover object-center w-full h-full rounded-lg group-hover/bento:scale-105 transition duration-200" />
+      </div>
+    ),
+    className: "md:col-span-1 flex items-center justify-center",
+    icon: null,
+  },
+  {
+    title: "",
+    description: "",
+    header: (
       <div className="flex flex-col justify-center h-full text-center">
         <p className="text-lg font-normal text-white group-hover/bento:translate-x-2 transition duration-200">
           I have 2 years of experience treating a variety of conditions in private practice, including musculoskeletal issues, post-surgical rehab, and sports injuries.
@@ -89,7 +111,7 @@ const items = [
         </p>
       </div>
     ),
-    className: "md:col-span-2 flex items-center justify-center",
+    className: "md:col-span-3 flex items-center justify-center",
     icon: null,
   },
 ];

@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <Head>
-        <title>Physiotherapist Portfolio</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>AbdullahiPT</title>
+        <link rel="icon" href="logo.jpg" />
       </Head>
       <Header />
       <main className="flex-grow bg-primary text-white">

@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/text-area";
 import { cn } from "../utils/cn";
 import { BackgroundGradient } from "./ui/background-gradient";
+import emailjs from '@emailjs/browser';
 
 export function ContactSection() {
   return (
@@ -19,7 +20,7 @@ export function ContactSection() {
               </p>
               <div className="flex justify-center md:justify-start">
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/abdullahi-abdirahman-439bb4187/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-500 hover:text-blue-700 transition duration-300"
@@ -46,6 +47,7 @@ export function ContactSection() {
 }
 
 export function ContactForm() {
+  const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -83,9 +85,13 @@ export function ContactForm() {
     });
   };
 
+  const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [showErrorToast, setShowErrorToast] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     const newErrors = {
       name: "",
       email: "",
@@ -105,96 +111,127 @@ export function ContactForm() {
     const hasErrors = Object.values(newErrors).some(error => error !== "");
 
     if (!hasErrors) {
-      console.log("Form data:", formData);
-      // You can handle the form submission here (e.g., sending data to a server)
-      alert("Form submitted successfully!");
-      // Reset form fields after submission
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: ""
-      });
-      setErrors({
-        name: "",
-        email: "",
-        phone: "",
-        message: ""
-      });
+      setIsSubmitting(true);
+      emailjs.sendForm('service_l9nv4t9', 'template_c7ni53g', form.current!, 'xtKMvv6BGywb5XbYU')
+        .then((result) => {
+          console.log('EMAIL SENT SUCCESSFULLY!', result.text);
+          setShowSuccessToast(true);
+          setTimeout(() => setShowSuccessToast(false), 3000);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            message: ""
+          });
+          setErrors({
+            name: "",
+            email: "",
+            phone: "",
+            message: ""
+          });
+        }, (error) => {
+          console.log('EMAIL SENDING FAILED...', error.text);
+          setShowErrorToast(true);
+          setTimeout(() => setShowErrorToast(false), 3000);
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
     }
   };
 
   return (
-    <BackgroundGradient containerClassName="max-w-md w-full mx-auto"> {/* Wrap the form container */}
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
-      <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-        Contact Me
-      </h2>
-      <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-        Please fill out the form below to get in touch with me.
-      </p>
+    <BackgroundGradient containerClassName="max-w-md w-full mx-auto">
+      <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+        <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+          Contact Me
+        </h2>
+        <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+          Please fill out the form below to get in touch with me.
+        </p>
 
-      <form className="my-8" onSubmit={handleSubmit}>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="name">Name</Label>
-          <Input 
-            id="name" 
-            placeholder="Your Name" 
-            type="text" 
-            value={formData.name} 
-            onChange={handleChange} 
-            required 
-          />
-          {errors.name && <span className="text-red-500">{errors.name}</span>}
-        </LabelInputContainer>
+        <form className="my-8" ref={form} onSubmit={handleSubmit}>
+          <LabelInputContainer className="mb-4">
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              type="text"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            {errors.name && <span className="text-red-500">{errors.name}</span>}
+          </LabelInputContainer>
 
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="email">Email Address</Label>
-          <Input 
-            id="email" 
-            placeholder="yourname@example.com" 
-            type="email" 
-            value={formData.email} 
-            onChange={handleChange} 
-            required 
-          />
-          {errors.email && <span className="text-red-500">{errors.email}</span>}
-        </LabelInputContainer>
+          <LabelInputContainer className="mb-4">
+            <Label htmlFor="email">Email Address</Label>
+            <Input
+              id="email"
+              name="email"
+              placeholder="yourname@example.com"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            {errors.email && <span className="text-red-500">{errors.email}</span>}
+          </LabelInputContainer>
 
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="phone">Phone Number (Optional)</Label>
-          <Input 
-            id="phone" 
-            placeholder="Your Phone Number" 
-            type="tel" 
-            value={formData.phone} 
-            onChange={handleChange} 
-          />
-          {errors.phone && <span className="text-red-500">{errors.phone}</span>}
-        </LabelInputContainer>
+          <LabelInputContainer className="mb-4">
+            <Label htmlFor="phone">Phone Number (Optional)</Label>
+            <Input
+              id="phone"
+              name="phone"
+              placeholder="Your Phone Number"
+              type="tel"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            {errors.phone && <span className="text-red-500">{errors.phone}</span>}
+          </LabelInputContainer>
 
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="message">Message</Label>
-          <Textarea 
-            id="message" 
-            placeholder="Your Message" 
-            value={formData.message} 
-            onChange={handleChange} 
-            required 
-            rows={4} 
-          />
-          {errors.message && <span className="text-red-500">{errors.message}</span>}
-        </LabelInputContainer>
+          <LabelInputContainer className="mb-4">
+            <Label htmlFor="message">Message</Label>
+            <Textarea
+              id="message"
+              name="message"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows={4}
+            />
+            {errors.message && <span className="text-red-500">{errors.message}</span>}
+          </LabelInputContainer>
 
-        <button
-          className="bg-gradient-to-br relative group/btn from-blue-500 to-blue-700 block w-full text-white rounded-md h-12 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--blue-700)_inset,0px_-1px_0px_0px_var(--blue-700)_inset] transition-all duration-300"
-          type="submit"
-        >
-          Send Message
-          <BottomGradient />
-        </button>
-      </form>
-    </div>
+          <button
+            className="bg-gradient-to-br relative group/btn from-blue-500 to-blue-700 block w-full text-white rounded-md h-12 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--blue-700)_inset,0px_-1px_0px_0px_var(--blue-700)_inset] transition-all duration-300 flex items-center justify-center"
+            type="submit"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <span className="loading loading-spinner loading-lg"></span>
+            ) : (
+              "Send Message"
+            )}
+            <BottomGradient />
+          </button>
+        </form>
+        <div className={`toast toast-center ${showSuccessToast || showErrorToast ? 'visible' : 'hidden'}`}>
+          {showSuccessToast && (
+            <div className="alert alert-success" style={{ backgroundColor: '#6495ED' }}>
+              <span>Message sent successfully.</span>
+            </div>
+          )}
+          {showErrorToast && (
+            <div className="alert alert-error" style={{ backgroundColor: '#DC143C' }}>
+              <span>An error occurred while submitting the form. Please try again.</span>
+            </div>
+          )}
+        </div>
+      </div>
     </BackgroundGradient>
   );
 }
