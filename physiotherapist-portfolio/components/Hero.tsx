@@ -39,15 +39,15 @@ export function HeroSection() {
           animate="visible"
           variants={paragraphVariants}
         >
-          Discover the healing power of{' '}
+          We have a personalised,{' '}
           <motion.span className="text-accent" variants={spanVariants}>
-            physiotherapy
+          evidence-based
           </motion.span>{' '}
-          and experience the benefits of personalized care. Trust in{' '}
+          physiotherapy service.{' '}
           <motion.span className="text-accent" variants={spanVariants}>
-            Abdullahi's
+          Exceptional
           </motion.span>{' '}
-          expertise to guide you on your path to recovery and wellness.
+          care is provided from initial consultation throughout your physiotherapy journey.
         </motion.p>
       </div>
       <BackgroundBeams className="absolute inset-0 z-0" />
