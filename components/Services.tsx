@@ -125,7 +125,7 @@ export function Services() {
       <div className="text-center mb-12">
         <h1 className="text-3xl font-bold text-white mb-4">My Physiotherapy Services</h1>
         <p className="text-lg text-white leading-relaxed">
-          At our clinic, we offer a variety of physiotherapy services designed to help you recover and maintain optimal health. Whether you need manual therapy, exercise prescriptions, or specialized neurological rehabilitation, our skilled professionals are here to support you.
+          I offer a variety of physiotherapy services designed to help you recover and maintain optimal health. Whether you need manual therapy, exercise prescriptions, or specialized neurological rehabilitation, i am here to support you.
         </p>
       </div>
 
