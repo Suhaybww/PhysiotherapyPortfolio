@@ -1,5 +1,25 @@
 ## Project Overview
-This project is a professional website for a physiotherapist built from scratch using modern web technologies. The frontend is developed using React, TypeScript, Next.js, Tailwind CSS, Daisy UI, and Acernity UI. The backend functionality is handled by EmailJS. The primary colors for the website are dark green, white, and blue.
+
+This project is a professional website for a physiotherapist, designed and developed to showcase their expertise, services, and facilitate client engagement. The website serves as a digital presence for the physiotherapist, highlighting their experience, qualifications, and the range of treatments they offer.
+
+Key features include:
+- Professional profile: Showcases the physiotherapist's experience, qualifications, and specialties.
+- Services overview: Detailed information about the various physiotherapy treatments and services offered.
+- Client testimonials: Displays feedback and success stories from satisfied clients.
+- Contact form: Allows potential clients to easily get in touch for appointments or inquiries.
+- Responsive design: Ensures a seamless experience across desktop and mobile devices.
+
+The website is built from scratch using modern web technologies:
+- Frontend: React, TypeScript, Next.js
+- Styling: Tailwind CSS, Daisy UI, Acernity UI
+- Backend functionality: EmailJS for handling contact form submissions
+- Color scheme: Dark green, white, and blue, creating a professional and calming aesthetic
+
+This project demonstrates the ability to create a fully functional, aesthetically pleasing, and user-friendly website tailored to the specific needs of a healthcare professional.
+
+Deployed Website: [Physiotherapy Portfolio](https://abdullahipt.vercel.app)
+
+The combination of cutting-edge technologies and thoughtful design ensures that the physiotherapist has a strong online presence to attract and engage potential clients.
 
 ## Technologies Used
 - **React**
@@ -15,7 +35,7 @@ Follow these steps to set up the project:
 1. **Clone the repository**:
 
   ```bash
-  git clone https://github.com/yourusername/physiotherapist-portfolio.git
+  git clone https://github.com/Suhaybww/PhysiotherapyPortfolio.git
   cd physiotherapist-portfolio
   ```
 2. **Install dependencies**:
